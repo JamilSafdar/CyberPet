@@ -1,0 +1,7 @@
+user to select an animal they like from 3 options (dog, cat, rabbit)
+create a js file to start program through console.
+
+include animal object
+properties: name, event(such as birthday, end of play(to end the game)), happiness
+method: feed(), play(), check-in() // to check on the pet every few hours, 
+

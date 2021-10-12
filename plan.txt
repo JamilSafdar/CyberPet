@@ -5,3 +5,10 @@ include animal object
 properties: name, event(such as birthday, end of play(to end the game)), happiness
 method: feed(), play(), check-in() // to check on the pet every few hours, 
 
+create pets to inherit from animal object
+
+create functions to choose pet and name
+
+create functions to decrease health and rest level
+
+create a start again or quit game event

@@ -1,5 +1,28 @@
-let input = prompt("input your details here:");
-console.log(input);
+
+alert("Welcome to the world of cyber pets, please ensure you take good care of them");
+
+const choosePet = () => {
+  petSelected = prompt("Please choose from a dog, cat or rabbit.");
+  if (petSelected.length === 0) {
+     alert("Please choose a pet to continue.");
+     petSelected = prompt("Please choose from a dog, cat or rabbit.");   
+  } else {
+    return alert(`Your chosen pet is a ${petSelected}`); //this currently isnt working
+  }
+};
+choosePet();
+
+const petName = () => {
+  namePet = prompt(`Now please name your ${petSelected}.`);
+  if (namePet.length === 0) {
+    alert("Please choose a name to continue.");
+    namePet = prompt(`Now please name your ${petSelected}.`);  
+ } else {
+   return alert(`Your ${petSelected} is now called ${namePet}`); //this currently isnt working
+ }
+};
+petName();
+
 // --global/generic variables--
     // this._event = event;
     // this._endOfGame = endGame;

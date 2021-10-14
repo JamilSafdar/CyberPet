@@ -1,3 +1,4 @@
+
 alert(
   "Welcome to the world of cyber pets, please ensure you take good care of them"
 );
@@ -33,6 +34,38 @@ const interaction = () => {
    return alert(`${namePet} is loving this`); //this currently isnt working
 };
 interaction();
+
+
+var inquirer = require('inquirer');
+inquirer
+  .prompt([
+    {
+    /* type: list,
+    message: "Pick the animal you are fostering:",
+    name: "Animal",
+    choices: ["dog", "cat", "rabbit"]
+     */
+  }
+  ])
+  .then((answers) => {
+    /*
+    if (answers.animal === "dog") {
+      
+    }
+    */
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
+
+
+
+let input = prompt("input your details here:");
+console.log(input);
 
 // --global/generic variables--
 // this._event = event;
@@ -140,3 +173,8 @@ class Rabbit extends Animal {
     );
   }
 }
+<<<<<<< HEAD
+
+//this is a test for the pull request on github
+=======
+>>>>>>> a97a3e44885e9d8200ab9e8bf9f6e14ea5719105

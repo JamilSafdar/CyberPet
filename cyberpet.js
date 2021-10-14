@@ -118,3 +118,5 @@ class Rabbit extends Animal {
     return 'You have made ' + this.name + 'this happy ' + this.showHappinessLevel();
   }
 }
+
+//this is a test for the pull request on github

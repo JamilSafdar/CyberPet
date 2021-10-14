@@ -1,3 +1,5 @@
+var inquirer = require("inquirer");
+
 alert(
   "Welcome to the world of cyber pets, please ensure you take good care of them"
 );

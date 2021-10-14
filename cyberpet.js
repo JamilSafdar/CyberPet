@@ -1,3 +1,31 @@
+var inquirer = require('inquirer');
+inquirer
+  .prompt([
+    {
+    /* type: list,
+    message: "Pick the animal you are fostering:",
+    name: "Animal",
+    choices: ["dog", "cat", "rabbit"]
+     */
+  }
+  ])
+  .then((answers) => {
+    /*
+    if (answers.animal === "dog") {
+      
+    }
+    */
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
+
+
+
 let input = prompt("input your details here:");
 console.log(input);
 // --global/generic variables--

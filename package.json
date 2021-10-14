@@ -1,0 +1,22 @@
+{
+  "name": "cyberpet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cyberpet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamilSafdar/CyberPet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamilSafdar/CyberPet/issues"
+  },
+  "homepage": "https://github.com/JamilSafdar/CyberPet#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}

@@ -1,3 +1,41 @@
+
+alert(
+  "Welcome to the world of cyber pets, please ensure you take good care of them"
+);
+let petSelected;
+let namePet;
+
+const choosePet = () => {
+  petSelected = prompt("Please choose from a dog, cat or rabbit.");
+  if (petSelected.length === 0) {
+    alert("Please choose a pet to continue.");
+    petSelected = prompt("Please choose from a dog, cat or rabbit.");
+  }
+  return alert(`Your chosen pet is a ${petSelected}`);
+};
+choosePet();
+
+const petName = () => {
+  namePet = prompt(`Now please name your ${petSelected}.`);
+  if (namePet.length === 0) {
+    alert("Please choose a name to continue.");
+    namePet = prompt(`Now please name your ${petSelected}.`);
+  } 
+   return alert(`Your ${petSelected} is now called ${namePet}`); //this currently isnt working
+};
+petName();
+
+const interaction = () => {
+  petInteraction = prompt(`would you like to play or feed ${namePet}.`);
+  if (petInteraction.length === 0) {
+    alert("Please choose a interact with your pet.");
+    petInteraction = prompt(`would you like to play or feed ${namePet}.`);
+  } 
+   return alert(`${namePet} is loving this`); //this currently isnt working
+};
+interaction();
+
+
 var inquirer = require('inquirer');
 inquirer
   .prompt([
@@ -28,13 +66,14 @@ inquirer
 
 let input = prompt("input your details here:");
 console.log(input);
+
 // --global/generic variables--
-    // this._event = event;
-    // this._endOfGame = endGame;
-    // this._checkIn = checkOnAnimal;
-    // this._happinessLevel = 0;
-    // this._rest = rest;
-    // this._restLevel = 0;
+// this._event = event;
+// this._endOfGame = endGame;
+// this._checkIn = checkOnAnimal;
+// this._happinessLevel = 0;
+// this._rest = rest;
+// this._restLevel = 0;
 class Animal {
   constructor(petName) {
     this._petName = petName;
@@ -94,8 +133,20 @@ class Dog extends Animal {
     this.play = play;
   }
   show() {
-    return 'You have fed ' + this.name + 'and made him this happy ' + this.showHappinessLevel();
-    return 'You have played with ' + this.name + 'and now ' + this.name + ' needs to rest ' + this.showRestLevel;
+    return (
+      "You have fed " +
+      this.name +
+      "and made him this happy " +
+      this.showHappinessLevel()
+    );
+    return (
+      "You have played with " +
+      this.name +
+      "and now " +
+      this.name +
+      " needs to rest " +
+      this.showRestLevel
+    );
   }
 }
 class Cat extends Animal {
@@ -105,7 +156,9 @@ class Cat extends Animal {
     this.play = play;
   }
   show() {
-    return 'You have made ' + this.name + 'this happy ' + this.showHappinessLevel();
+    return (
+      "You have made " + this.name + "this happy " + this.showHappinessLevel()
+    );
   }
 }
 class Rabbit extends Animal {
@@ -115,8 +168,13 @@ class Rabbit extends Animal {
     this.play = play;
   }
   show() {
-    return 'You have made ' + this.name + 'this happy ' + this.showHappinessLevel();
+    return (
+      "You have made " + this.name + "this happy " + this.showHappinessLevel()
+    );
   }
 }
+<<<<<<< HEAD
 
 //this is a test for the pull request on github
+=======
+>>>>>>> a97a3e44885e9d8200ab9e8bf9f6e14ea5719105

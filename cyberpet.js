@@ -1,30 +1,65 @@
 var inquirer = require('inquirer');
 
 /* Code below to interact with app through terminal */
-inquirer
-  .prompt([
+
+let pet;
+let initQuestions = [
     {
-    /* type: list,
-    message: "Pick the animal you are fostering:",
-    name: "Animal",
-    choices: ["dog", "cat", "rabbit"]
-     */
-  }
-  ])
-  .then((answers) => {
-    /*
-    if (answers.animal === "dog") {
-      
-    }
-    */
-  })
-  .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
-    } else {
-      // Something else went wrong
-    }
-  });
+      type: "rawlist",
+      name: "type",
+      message: "Pick the animal you are fostering:",
+      choices: ["Dog", "Cat", "Rabbit"],
+    },
+    {
+    type: "input",
+    name: "name",
+    message: "Please choose a name for your pet",
+    },
+  ];
+
+let loopQuestion = [
+  {
+    type: "rawlist",
+    name: "action",
+    message: `What would you like to feed or play your pet?`,
+    choices: ["Feed", "Play"],
+  },
+];
+
+const loop = () => {
+
+  inquirer
+    .prompt(loopQuestion)
+    .then((answers) => {
+      if (answers.action === "Feed") {
+        console.log("Feed + 10");
+        // pet.food()
+    } else if (answers.action === "Play") {
+        console.log("Play + 10");
+        // pet.play()
+    } 
+    })
+    .then(() => loop());
+};
+
+const init = () => {
+    inquirer.prompt(initQuestions)
+        .then((answers) => {
+            if (answers.type === "Cat") {
+                // pet = new Cat(answers.name)
+                console.log("Cat created")
+            } else if (answers.type === "Dog") {
+                // pet = new Dog(answers.name)
+                console.log("Dog created")
+            } else {
+                // pet = new Rabbit(answers.name)
+                console.log("Rabbit created")
+            }
+        })
+        .then(() => loop())
+}
+
+init()
 
 /* Code below to interact with app in browser*/
 
@@ -171,4 +206,6 @@ class Rabbit extends Animal {
     );
   }
 }
+
+
 

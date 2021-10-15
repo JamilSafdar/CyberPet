@@ -173,8 +173,3 @@ class Rabbit extends Animal {
     );
   }
 }
-<<<<<<< HEAD
-
-//this is a test for the pull request on github
-=======
->>>>>>> a97a3e44885e9d8200ab9e8bf9f6e14ea5719105

@@ -3,8 +3,8 @@ var inquirer = require('inquirer');
 /* Code below to interact with app through terminal */
 
 let pet;
-let happinessLevel = 0;
-let restLevel = 100;
+let happinessLevel = 20;
+let restLevel = 20;
 let initQuestions = [
     {
       type: "rawlist",
@@ -23,7 +23,7 @@ let loopQuestion = [
   {
     type: "rawlist",
     name: "action",
-    message: `Would you like to feed or play with your pet?`,
+    message: `Would you like your animal to eat, play or rest?`,
     choices: ["Feed", "Play", "Rest"],
   },
 ];
@@ -40,7 +40,7 @@ const loop = () => {
         console.log(`your pet is ${happinessLevel}/100 happy`);
         // pet.food()
     } else if (answers.action === "Play") {
-      if(restLevel >= 100 && restLevel > 10) {
+      if(restLevel <= 100 && restLevel > 10) {
         restLevel -= 10;
         happinessLevel += 10;
       }
@@ -54,7 +54,7 @@ const loop = () => {
        console.log(`your pets energy level is ${restLevel}/100`);
        console.log(`your pet is ${happinessLevel}/100 happy`);
        //pet.rest()
-    }
+    } 
     })
     .then(() => loop());
 };

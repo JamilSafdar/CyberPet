@@ -1,40 +1,69 @@
-var inquirer = require("inquirer");
+var inquirer = require('inquirer');
 
-alert(
-  "Welcome to the world of cyber pets, please ensure you take good care of them"
-);
-let petSelected;
-let namePet;
-
-const choosePet = () => {
-  petSelected = prompt("Please choose from a dog, cat or rabbit.");
-  if (petSelected.length === 0) {
-    alert("Please choose a pet to continue.");
-    petSelected = prompt("Please choose from a dog, cat or rabbit.");
+/* Code below to interact with app through terminal */
+inquirer
+  .prompt([
+    {
+    /* type: list,
+    message: "Pick the animal you are fostering:",
+    name: "Animal",
+    choices: ["dog", "cat", "rabbit"]
+     */
   }
-  return alert(`Your chosen pet is a ${petSelected}`);
-};
-choosePet();
+  ])
+  .then((answers) => {
+    /*
+    if (answers.animal === "dog") {
+      
+    }
+    */
+  })
+  .catch((error) => {
+    if (error.isTtyError) {
+      // Prompt couldn't be rendered in the current environment
+    } else {
+      // Something else went wrong
+    }
+  });
 
-const petName = () => {
-  namePet = prompt(`Now please name your ${petSelected}.`);
-  if (namePet.length === 0) {
-    alert("Please choose a name to continue.");
-    namePet = prompt(`Now please name your ${petSelected}.`);
-  } 
-   return alert(`Your ${petSelected} is now called ${namePet}`); //this currently isnt working
-};
-petName();
+/* Code below to interact with app in browser*/
 
-const interaction = () => {
-  petInteraction = prompt(`would you like to play or feed ${namePet}.`);
-  if (petInteraction.length === 0) {
-    alert("Please choose a interact with your pet.");
-    petInteraction = prompt(`would you like to play or feed ${namePet}.`);
-  } 
-   return alert(`${namePet} is loving this`); //this currently isnt working
-};
-interaction();
+// alert(
+//   "Welcome to the world of cyber pets, please ensure you take good care of them"
+// );
+// let petSelected;
+// let namePet;
+
+// const choosePet = () => {
+//   petSelected = prompt("Please choose from a dog, cat or rabbit.");
+//   if (petSelected.length === 0) {
+//     alert("Please choose a pet to continue.");
+//     petSelected = prompt("Please choose from a dog, cat or rabbit.");
+//   }
+//   return alert(`Your chosen pet is a ${petSelected}`);
+// };
+// choosePet();
+
+// const petName = () => {
+//   namePet = prompt(`Now please name your ${petSelected}.`);
+//   if (namePet.length === 0) {
+//     alert("Please choose a name to continue.");
+//     namePet = prompt(`Now please name your ${petSelected}.`);
+//   } 
+//    return alert(`Your ${petSelected} is now called ${namePet}`); 
+// };
+// petName();
+
+// const interaction = () => {
+//   petInteraction = prompt(`would you like to play or feed ${namePet}.`);
+//   if (petInteraction.length === 0) {
+//     alert("Please choose a interact with your pet.");
+//     petInteraction = prompt(`would you like to play or feed ${namePet}.`);
+//   } 
+//    return alert(`${namePet} is loving this`); 
+// };
+// interaction();
+
 
 // --global/generic variables--
 // this._event = event;
@@ -142,3 +171,4 @@ class Rabbit extends Animal {
     );
   }
 }
+

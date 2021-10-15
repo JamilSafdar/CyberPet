@@ -21,7 +21,7 @@ let loopQuestion = [
   {
     type: "rawlist",
     name: "action",
-    message: `What would you like to feed or play your pet?`,
+    message: `Would you like to feed or play with your pet?`,
     choices: ["Feed", "Play"],
   },
 ];
@@ -105,11 +105,9 @@ init()
 class Animal {
   constructor(petName) {
     this._petName = petName;
+    this._endOfGame = endGame;
   }
 
-  get event() {
-    return this._event;
-  }
   get endGame() {
     return this._endOfGame;
   }
@@ -119,10 +117,6 @@ class Animal {
 
   get play() {
     return this._play;
-  }
-
-  get checkIn() {
-    return this._checkIn;
   }
 
   get happinessLevel() {
@@ -153,7 +147,15 @@ const showRestLevel = (rest, play) => {
   for (let i = 0; i <= restLevel; i--) {
     play -= restLevel;
   }
+}
+const showEndGame = (endGame) => {
+  if (happinessLevel > 80 && restLevel > 80) {
+    return (
+      `you have made ${this.name} happy! They are ready to move to their new home.`
+    )
+  }
 };
+
 class Dog extends Animal {
   constructor(name, feed, play) {
     super(name);

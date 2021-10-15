@@ -24,7 +24,7 @@ let loopQuestion = [
     type: "rawlist",
     name: "action",
     message: `Would you like to feed or play with your pet?`,
-    choices: ["Feed", "Play"],
+    choices: ["Feed", "Play", "Rest"],
   },
 ];
 
@@ -34,20 +34,27 @@ const loop = () => {
     .prompt(loopQuestion)
     .then((answers) => {
       if (answers.action === "Feed") {
-       if(happinessLevel <= 100) {
+       if(happinessLevel < 100) {
          happinessLevel += 10;
        }
         console.log(`your pet is ${happinessLevel}/100 happy`);
         // pet.food()
     } else if (answers.action === "Play") {
-      if(restLevel >= 100) {
+      if(restLevel >= 100 && restLevel > 10) {
         restLevel -= 10;
         happinessLevel += 10;
       }
        console.log(`your pets energy level is ${restLevel}/100`);
        console.log(`your pet is ${happinessLevel}/100 happy`);
         // pet.play()
-    } 
+    } else if (answers.action === "Rest") {
+      if(restLevel < 100) {
+        restLevel += 10;
+      }
+       console.log(`your pets energy level is ${restLevel}/100`);
+       console.log(`your pet is ${happinessLevel}/100 happy`);
+       //pet.rest()
+    }
     })
     .then(() => loop());
 };
@@ -171,6 +178,7 @@ class Dog extends Animal {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (
@@ -194,6 +202,7 @@ class Cat extends Animal {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (
@@ -206,6 +215,7 @@ class Rabbit extends Animal {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (

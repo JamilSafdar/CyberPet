@@ -101,12 +101,7 @@ init()
 
 
 // --global/generic variables--
-// this._event = event;
-// this._endOfGame = endGame;
-// this._checkIn = checkOnAnimal;
-// this._happinessLevel = 0;
-// this._rest = rest;
-// this._restLevel = 0;
+
 class Animal {
   constructor(petName) {
     this._petName = petName;

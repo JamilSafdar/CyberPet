@@ -28,12 +28,21 @@ let loopQuestion = [
   },
 ];
 
+// const init2 = () => {
+//   if (happinessLevel >= 80 && restLevel >= 80) {
+//     console.log(`Congratulations! You have made your pet happy and they are ready to be homed.`);
+//     return init();
+//   }
+// }
+// init2();
+
 const loop = () => {
 
   inquirer
     .prompt(loopQuestion)
     .then((answers) => {
-      if (answers.action === "Feed") {
+      
+       if (answers.action === "Feed") {
        if(happinessLevel < 100) {
          happinessLevel += 10;
        }
@@ -75,8 +84,23 @@ const init = () => {
         })
         .then(() => loop())
 }
-
 init()
+
+
+
+// const WantToExit = () =>
+//   inquirer
+//     .prompt([
+//       {
+//         name: "moreQuery",
+//         type: "confirm",
+//         message: "Want to do anything else?",
+//       },
+//     ])
+//     .then((answer) => {
+//       if (answer.moreQuery) return init();
+//     });
+
 
 /* Code below to interact with app in browser*/
 

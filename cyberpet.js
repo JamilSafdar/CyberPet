@@ -3,8 +3,8 @@ var inquirer = require('inquirer');
 /* Code below to interact with app through terminal */
 
 let pet;
-let happinessLevel = 0;
-let restLevel = 100;
+let happinessLevel = 20;
+let restLevel = 20;
 let initQuestions = [
     {
       type: "rawlist",
@@ -23,30 +23,46 @@ let loopQuestion = [
   {
     type: "rawlist",
     name: "action",
-    message: `What would you like to feed or play your pet?`,
-    choices: ["Feed", "Play"],
+    message: `Would you like your animal to eat, play or rest?`,
+    choices: ["Feed", "Play", "Rest"],
   },
 ];
+
+// const init2 = () => {
+//   if (happinessLevel >= 80 && restLevel >= 80) {
+//     console.log(`Congratulations! You have made your pet happy and they are ready to be homed.`);
+//     return init();
+//   }
+// }
+// init2();
 
 const loop = () => {
 
   inquirer
     .prompt(loopQuestion)
     .then((answers) => {
-      if (answers.action === "Feed") {
-       if(happinessLevel <= 100) {
+      
+       if (answers.action === "Feed") {
+       if(happinessLevel < 100) {
          happinessLevel += 10;
        }
         console.log(`your pet is ${happinessLevel}/100 happy`);
         // pet.food()
     } else if (answers.action === "Play") {
-      if(restLevel >= 100) {
+      if(restLevel <= 100 && restLevel > 10) {
         restLevel -= 10;
         happinessLevel += 10;
       }
        console.log(`your pets energy level is ${restLevel}/100`);
        console.log(`your pet is ${happinessLevel}/100 happy`);
         // pet.play()
+    } else if (answers.action === "Rest") {
+      if(restLevel < 100) {
+        restLevel += 10;
+      }
+       console.log(`your pets energy level is ${restLevel}/100`);
+       console.log(`your pet is ${happinessLevel}/100 happy`);
+       //pet.rest()
     } 
     })
     .then(() => loop());
@@ -68,8 +84,23 @@ const init = () => {
         })
         .then(() => loop())
 }
-
 init()
+
+
+
+// const WantToExit = () =>
+//   inquirer
+//     .prompt([
+//       {
+//         name: "moreQuery",
+//         type: "confirm",
+//         message: "Want to do anything else?",
+//       },
+//     ])
+//     .then((answer) => {
+//       if (answer.moreQuery) return init();
+//     });
+
 
 /* Code below to interact with app in browser*/
 
@@ -115,11 +146,9 @@ init()
 class Animal {
   constructor(petName) {
     this._petName = petName;
+    this._endOfGame = endGame;
   }
 
-  get event() {
-    return this._event;
-  }
   get endGame() {
     return this._endOfGame;
   }
@@ -129,10 +158,6 @@ class Animal {
 
   get play() {
     return this._play;
-  }
-
-  get checkIn() {
-    return this._checkIn;
   }
 
   get happinessLevel() {
@@ -148,27 +173,36 @@ class Animal {
   }
 }
 
-// const showHappinessLevel = (feed, play) => {
-//   for (let i = 0; i <= happinessLevel; i++) {
-//     feed += happinessLevel;
-//   }
-//   for (let i = 0; i <= happinessLevel; i++) {
-//     play += happinessLevel;
-//   }
-// };
-// const showRestLevel = (rest, play) => {
-//   for (let i = 0; i <= restLevel; i++) {
-//     rest += restLevel;
-//   }
-//   for (let i = 0; i <= restLevel; i--) {
-//     play -= restLevel;
-//   }
-// };
+const showHappinessLevel = (feed, play) => {
+  for (let i = 0; i <= happinessLevel; i++) {
+    feed += happinessLevel;
+  }
+  for (let i = 0; i <= happinessLevel; i++) {
+    play += happinessLevel;
+  }
+};
+const showRestLevel = (rest, play) => {
+  for (let i = 0; i <= restLevel; i++) {
+    rest += restLevel;
+  }
+  for (let i = 0; i <= restLevel; i--) {
+    play -= restLevel;
+  }
+}
+const showEndGame = (endGame) => {
+  if (happinessLevel > 80 && restLevel > 80) {
+    return (
+      `you have made ${this.name} happy! They are ready to move to their new home.`
+    )
+  }
+};
+
 class Dog extends Animal {
   constructor(name, feed, play) {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (
@@ -192,6 +226,7 @@ class Cat extends Animal {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (
@@ -204,6 +239,7 @@ class Rabbit extends Animal {
     super(name);
     this.feed = feed;
     this.play = play;
+    this.rest = rest;
   }
   show() {
     return (

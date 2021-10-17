@@ -28,14 +28,6 @@ let loopQuestion = [
   },
 ];
 
-// const init2 = () => {
-//   if (happinessLevel >= 80 && restLevel >= 80) {
-//     console.log(`Congratulations! You have made your pet happy and they are ready to be homed.`);
-//     return init();
-//   }
-// }
-// init2();
-
 const loop = () => {
 
   inquirer
@@ -64,6 +56,9 @@ const loop = () => {
        console.log(`your pet is ${happinessLevel}/100 happy`);
        //pet.rest()
     } 
+    if (happinessLevel >= 80 && restLevel >= 80) {
+      console.log(`Congratulations! You have made your pet happy and they are ready to be homed.`);
+    }
     })
     .then(() => loop());
 };
@@ -82,11 +77,18 @@ const init = () => {
                 console.log("Rabbit created")
             }
         })
-        .then(() => loop())
-}
-init()
+        .then(() => loop());
+      }    
 
+// const init2 = () => {
+//   if (happinessLevel >= 80 && restLevel >= 80) {
+//     console.log(`Congratulations! You have made your pet happy and they are ready to be homed.`);
+//     return init2();
+//   }
+// }
 
+init();
+// init2();
 
 // const WantToExit = () =>
 //   inquirer
